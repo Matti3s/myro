@@ -9,6 +9,10 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 import json
+from pyvirtualdisplay import Display
+
+display = Display(visible=0, size=(800, 600))
+display.start()
 
 with open('./lastTest.json') as f:
   lastTestJSON = json.load(f)
