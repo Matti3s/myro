@@ -26,7 +26,7 @@ load_dotenv(dotenv_path=env_path)
 client = slack.WebClient(token=os.environ['SLACK_TOKEN'])
 client.chat_postMessage(channel='#punten', text="Bot Connected")
 
-PATH = "C:\Program Files (x86)\chromedriver.exe"
+PATH = "/usr/lib/chromium-browser/chromedriver"
 driver = webdriver.Chrome(PATH)
 
 driver.get("https://ouders.sgsintpaulus.be/")
