@@ -8,6 +8,13 @@ import slack
 import os
 from pathlib import Path
 from dotenv import load_dotenv
+import json
+
+with open('./lastTest.json') as f:
+  lastTestJSON = json.load(f)
+
+lastTest = lastTestJSON.get('lastTest')
+print(lastTest)
 
 env_path = Path('.') / '.env'
 load_dotenv(dotenv_path=env_path)
@@ -20,8 +27,6 @@ driver = webdriver.Chrome(PATH)
 
 driver.get("https://ouders.sgsintpaulus.be/")
 wait = WebDriverWait(driver, 100)
-
-lastTest = "Overhoring 3 (telt mee op 10 bij DW2S)"
 
 while True: 
     try:
@@ -61,6 +66,10 @@ while True:
                 print("No change")
             else: 
                 lastTest = colTitle.text
+                lastTestJSON['lastTest'] = colTitle.text
+
+                with open('./lastTest.json', 'w') as json_file:
+                    json.dump(lastTestJSON, json_file)
 
                 #slack notification 
                 client.chat_postMessage(channel='#punten', text= "Nieuwe punten: " + colVak.text + " " + colTitle.text + ": Punten: " + colPoint.text + colMax.text)
