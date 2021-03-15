@@ -31,30 +31,39 @@ options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
 driver = webdriver.Chrome("/usr/lib/chromium-browser/chromedriver", options=options)
 
-driver.get("https://ouders.sgsintpaulus.be/")
 wait = WebDriverWait(driver, 100)
 
 try:
+    driver.get("https://ouders.sgsintpaulus.be/")
+    print("gelukt1")
+
     #login
+    time.sleep(5)
     elementUsername = wait.until(EC.presence_of_element_located((By.ID, "login-user-inputEl")))
     elementPassword = wait.until(EC.presence_of_element_located((By.ID, "login-password-inputEl")))
+    print("gelukt2")
+
     elementUsername.send_keys("peter.n@telenet.be")
     elementPassword.send_keys("22320")
     elementPassword.send_keys(Keys.RETURN)
+    print("gelukt3")
 
-    time.sleep(3)
+    time.sleep(5)
     elementPlusje = wait.until(EC.presence_of_element_located((By.ID, 'lltree25759')))
     elementPlusje.click()
+    print("gelukt4")
 
-    time.sleep(3)
+    time.sleep(5)
     elementRapport = wait.until(EC.presence_of_element_located((By.CLASS_NAME, 'llrapport')))
     elementRapport.click()
+    print("gelukt5")
 
-    time.sleep(3)
+    time.sleep(5)
     elementRapportBtn = wait.until(EC.presence_of_element_located((By.XPATH, '/html/body/div[5]/div[2]/div/div/div/div/div/div[2]/div/div/div[1]/em/button/span[1]')))
     elementRapportBtn.click()
+    print("gelukt6")
 
-    time.sleep(3)
+    time.sleep(5)
     driver.get("https://online.myro.be/logbook.php?Recent")
     table_id = wait.until(EC.presence_of_element_located((By.CLASS_NAME, 'studentBody')))
     rows = table_id.find_elements(By.TAG_NAME, "tr") # get all of the rows in the table
