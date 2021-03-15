@@ -48,22 +48,23 @@ try:
     elementPassword.send_keys(Keys.RETURN)
     print("gelukt3")
 
-    time.sleep(5)
+    time.sleep(10)
     elementPlusje = wait.until(EC.presence_of_element_located((By.ID, 'lltree25759')))
+    print("gelukt4.1")
     elementPlusje.click()
-    print("gelukt4")
+    print("gelukt4.2")
 
-    time.sleep(5)
+    time.sleep(10)
     elementRapport = wait.until(EC.presence_of_element_located((By.CLASS_NAME, 'llrapport')))
     elementRapport.click()
     print("gelukt5")
 
-    time.sleep(5)
+    time.sleep(10)
     elementRapportBtn = wait.until(EC.presence_of_element_located((By.XPATH, '/html/body/div[5]/div[2]/div/div/div/div/div/div[2]/div/div/div[1]/em/button/span[1]')))
     elementRapportBtn.click()
     print("gelukt6")
 
-    time.sleep(5)
+    time.sleep(10)
     driver.get("https://online.myro.be/logbook.php?Recent")
     table_id = wait.until(EC.presence_of_element_located((By.CLASS_NAME, 'studentBody')))
     rows = table_id.find_elements(By.TAG_NAME, "tr") # get all of the rows in the table
